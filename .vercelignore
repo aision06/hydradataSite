@@ -1,0 +1,8 @@
+HYDRADATA Website Requirements v1.0.md
+HYDRADATA_brand_assets_split.zip
+HYDRADATA_brand_assets_split/
+namecheap-order-*.pdf
+.tools/
+.next/
+node_modules/
+.next-dev.*.log
