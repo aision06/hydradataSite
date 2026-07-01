@@ -11,17 +11,53 @@ import {
   GitBranch,
   Layers3,
   Mail,
+  MapPin,
   Network,
+  Phone,
   RefreshCw,
   Route,
   SearchCheck,
   ShieldCheck,
   Sparkles,
+  Globe2,
   Workflow,
 } from "lucide-react";
 
 const contactHref =
-  "mailto:contact@hydradata.fr?subject=HYDRADATA%20consultation%20request";
+  "mailto:chenjianghydra@outlook.com?subject=HYDRADATA%20consultation%20request";
+
+const contactDetails = [
+  {
+    label: "Email",
+    value: "chenjianghydra@outlook.com",
+    href: "mailto:chenjianghydra@outlook.com?subject=HYDRADATA%20consultation%20request",
+    icon: Mail,
+  },
+  {
+    label: "Phone",
+    value: "+33 6 98 44 72 87",
+    href: "tel:+33698447287",
+    icon: Phone,
+  },
+  {
+    label: "LinkedIn",
+    value: "linkedin.com/in/chen-jiang-hydra",
+    href: "https://www.linkedin.com/in/chen-jiang-hydra",
+    icon: Network,
+  },
+  {
+    label: "Location",
+    value: "Paris, France",
+    href: null,
+    icon: MapPin,
+  },
+  {
+    label: "Availability",
+    value: "Remote consulting available",
+    href: null,
+    icon: Globe2,
+  },
+];
 
 const painPoints = [
   {
@@ -189,6 +225,7 @@ export default function Home() {
               <span>Data Automation</span>
               <span>KPI Design</span>
               <span>AI Workflows</span>
+              <span>Remote Services</span>
             </div>
           </div>
 
@@ -387,15 +424,41 @@ export default function Home() {
             <p>
               Whether you need a Power BI dashboard, a cleaner reporting process,
               a KPI framework or a more automated data workflow, HYDRADATA can
-              help you structure the next step.
+              help you structure the next step. Remote consulting is available
+              for teams in France and internationally.
             </p>
           </div>
-          <div className="contact-action">
-            <a className="button button-primary button-light" href={contactHref}>
+          <div className="contact-panel">
+            <a className="button button-primary" href={contactHref}>
               <Mail size={18} aria-hidden="true" />
               <span>Contact HYDRADATA</span>
             </a>
             <p>Tell us about your reporting challenge and we will help you identify the clearest next step.</p>
+            <div className="contact-list" aria-label="HYDRADATA contact details">
+              {contactDetails.map((detail) => {
+                const content = (
+                  <>
+                    <span className="contact-icon">
+                      <detail.icon size={18} aria-hidden="true" />
+                    </span>
+                    <span>
+                      <small>{detail.label}</small>
+                      <strong>{detail.value}</strong>
+                    </span>
+                  </>
+                );
+
+                return detail.href ? (
+                  <a className="contact-row" href={detail.href} key={detail.label}>
+                    {content}
+                  </a>
+                ) : (
+                  <div className="contact-row" key={detail.label}>
+                    {content}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
